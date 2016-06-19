@@ -101,6 +101,7 @@ class FunSetSuite extends FunSuite {
       assert(contains(s2, 2), "Singleton")
       assert(contains(s3, 3), "Singleton")
 
+
     }
   }
 
