@@ -86,7 +86,7 @@ class FunSetSuite extends FunSuite {
    * Once you finish your implementation of "singletonSet", exchange the
    * function "ignore" by "test".
    */
-  test("singletonSet(1) contains 1") {
+  test("singleton sets") {
 
     /**
      * We create a new instance of the "TestSets" trait, this gives us access
@@ -98,10 +98,13 @@ class FunSetSuite extends FunSuite {
        * the test fails. This helps identifying which assertion failed.
        */
       assert(contains(s1, 1), "Singleton")
+      assert(contains(s2, 2), "Singleton")
+      assert(contains(s3, 3), "Singleton")
+
     }
   }
 
-  test("union contains all elements of each set") {
+  test("union tests") {
     new TestSets {
       val s = union(s1, s2)
       assert(contains(s, 1), "Union 1")
@@ -110,5 +113,15 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("diffs tests") {
+    new TestSets {
+      val s = union(s1, s2)
+      val t = diff(s, s2)
+      val u = union(s, s3)
+      val v = diff(u, singletonSet(3))
+      assert(contains(t, 1), "Diff (s1+s2) - s2")
+      assert(contains(v, 2), "Diff (s1+s2+s3) - 3")
+    }
+  }
 
 }
